@@ -21,6 +21,7 @@
 #include "RGSettings.h"
 
 #include <QtGui>
+#include <QMessageBox>
 
 /**
  * Workaround with google api, dragging the map doesn't work,
@@ -89,12 +90,13 @@ void RGGoogleMap::on_goButton_clicked(bool)
 
 	QString manUrl = ui.lineEdit->text();
 	QUrl url = manUrl;
+	QUrlQuery* query = new QUrlQuery(url.query());
 	QString latlon;
 	QString zoom;
 	if (url.hasFragment() || url.host().contains("google"))
 	{
-		latlon = url.queryItemValue ("ll");
-		zoom = url.queryItemValue ("z");
+		latlon = query->queryItemValue ("ll");
+		zoom = query->queryItemValue ("z");
 		if (latlon.isEmpty() || zoom.isEmpty())
 		{
 			//Now try the new google maps URL format (the construction is not supported by QUrl, so parse the URL manually

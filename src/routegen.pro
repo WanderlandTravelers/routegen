@@ -3,14 +3,15 @@
 ######################################################################
 
 TEMPLATE = app
-CONFIG += debug #release
+CONFIG += debug
+#CONFIG += release
 TARGET = routegen
 DEPENDPATH += .
 INCLUDEPATH += .
 MOC_DIR = ./build/moc
 OBJECTS_DIR = ./build/obj
 UI_DIR = ./build/ui
-QT += webkit
+QT += core webkit widgets webkitwidgets
 
 # Input
 HEADERS += RGMainWindow.h RGVehicleDialog.h RGSettings.h RGSettingsDialog.h RGGoogleMap.h \

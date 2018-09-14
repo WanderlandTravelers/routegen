@@ -18,6 +18,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <QGraphicsScene>
+#include <QGraphicsSceneMouseEvent>
+#include <QGraphicsView>
 #include "RGEditPath.h"
 
 RGEditPath::RGEditPath(QGraphicsItem *parent) :
@@ -29,7 +32,7 @@ RGEditPath::RGEditPath(QGraphicsItem *parent) :
 {
   setPos(0,0);
   setCursor(Qt::CrossCursor);
-  setAcceptsHoverEvents(true);
+  setAcceptHoverEvents(true);
   setFlag(QGraphicsItem::ItemHasNoContents);
 }
 

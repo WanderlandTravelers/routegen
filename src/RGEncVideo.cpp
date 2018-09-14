@@ -20,6 +20,7 @@
 
 #include "RGEncVideo.h"
 #include <QtGui>
+#include <QFileDialog>
 #include <RGSettings.h>
 
 RGEncVideo::RGEncVideo(QWidget *parent) :

@@ -18,6 +18,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <QGraphicsScene>
+#include <QGraphicsSceneMouseEvent>
 #include "RGEditPathPoint.h"
 
 RGEditPathPoint::RGEditPathPoint(QGraphicsItem *parent,QPoint point) :

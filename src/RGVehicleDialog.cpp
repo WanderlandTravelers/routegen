@@ -23,6 +23,7 @@
 #include <QPainter>
 #include <QDesktopServices>
 #include <QFileDialog>
+#include <QMessageBox>
 
 #include "RGVehicleDialog.h"
 
@@ -79,7 +80,7 @@ void RGVehicleDialog::reject()
 void RGVehicleDialog::on_addVehiclePB_clicked(bool)
 {
   QString fileName = QFileDialog::getOpenFileName(this, tr("Select image/icon file to add as custom vehicle"),
-                                                  QDesktopServices::storageLocation(QDesktopServices::PicturesLocation),
+                                                  QStandardPaths::standardLocations(QStandardPaths::PicturesLocation)[0],
                                                   tr("Images (*.jpg *.gif *.png)"));
   if (!fileName.isNull()){
     QString errStr;

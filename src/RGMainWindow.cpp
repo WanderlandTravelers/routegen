@@ -20,6 +20,8 @@
 
 
 #include <QtGui>
+#include <QFileDialog>
+#include <QTextBrowser>
 
 #include "RGMainWindow.h"
 #include "RGSettings.h"

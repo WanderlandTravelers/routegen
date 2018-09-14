@@ -45,7 +45,7 @@ RGVehicleList::RGVehicleList()
 
   //Also look in user's local data directory for custom vehicles
   //TODO: Should also be working on linux: check! then above linux dependent block can be removed!
-  vehicleDir.setPath(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/vehicles");
+  vehicleDir.setPath(QStandardPaths::standardLocations(QStandardPaths::DataLocation)[0] + "/vehicles");
   if (vehicleDir.exists())
   {
     vehicles.append(vehicleDir.entryInfoList());
@@ -135,7 +135,7 @@ void RGVehicleList::loadVehiclesSettings()
 
 RGVehicle* RGVehicleList::addCustomVehicle(const QString &fileName, QString &errStr)
 {
-  QDir customVehicleDir = QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/vehicles";
+  QDir customVehicleDir = QStandardPaths::standardLocations(QStandardPaths::DataLocation)[0] + "/vehicles";
   if (!customVehicleDir.exists())
   {
     //It should have been created in constructor, so it's an error if this didn't succeed
