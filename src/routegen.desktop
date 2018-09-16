@@ -6,5 +6,5 @@ Exec=routegen
 Terminal=false
 Type=Application
 Icon=mapgen
-Categories=Multimedia;
+Categories=Utility;
 StartupNotify=true
