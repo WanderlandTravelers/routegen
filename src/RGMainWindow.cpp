@@ -47,7 +47,7 @@ RGMainWindow::RGMainWindow(QWidget *parent)
 {
   //Set currentPath
   QDir::setCurrent(QCoreApplication::applicationDirPath());
-#ifdef Q_WS_X11
+#ifdef Q_OS_LINUX
   QDir vehicleDir = QDir::currentPath() + "/vehicles";
   if(!vehicleDir.exists()){
     QDir::setCurrent(QDir::cleanPath(QCoreApplication::applicationDirPath()+"/../share/routegen"));

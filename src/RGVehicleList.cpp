@@ -37,7 +37,7 @@ RGVehicleList::RGVehicleList()
   //check folder ~/.routegen/vehicles in linux
   //Still for backward compatibilitie with old version, now using QDesktopServices,
   //which is OS independent
-#ifdef Q_WS_X11
+#ifdef Q_OS_LINUX
   vehicleDir.mkpath(QDir::homePath() + "/.routegen/vehicles");
   vehicleDir.setPath( QDir::homePath() + "/.routegen/vehicles");
   vehicles.append(vehicleDir.entryInfoList());
