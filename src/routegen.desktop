@@ -5,6 +5,6 @@ GenericName=Route Generator
 Exec=routegen
 Terminal=false
 Type=Application
-Icon=maproute.png
+Icon=mapgen
 Categories=Multimedia;
 StartupNotify=true
