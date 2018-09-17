@@ -38,12 +38,12 @@ after_success:
   - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
   - chmod a+x linuxdeployqt-continuous-x86_64.AppImage
   - mkdir -p packages && cd packages
-  - ../linuxdeployqt-continuous-x86_64.AppImage ../appdir/usr/local/share/applications/routegen.desktop -appimage
   - gem install --no-ri --no-rdoc fpm
   - fpm -s dir -t pacman -n routegen -v $VERSION ../appdir/=/
   - fpm -s dir -t deb -n routegen -v $VERSION ../appdir/=/
   - fpm -s dir -t freebsd -n routegen -v $VERSION ../appdir/=/
   - fpm -s dir -t rpm -n routegen -v $VERSION ../appdir/=/
+  - ../linuxdeployqt-continuous-x86_64.AppImage ../appdir/usr/local/share/applications/routegen.desktop -appimage
 
 deploy:
   provider: releases
