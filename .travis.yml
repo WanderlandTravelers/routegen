@@ -51,7 +51,7 @@ deploy:
   api_key:
     secure: golz8jGgEVz9NKsTcah+1X63yAaM1LmBKnQKbLzGQkO8LlmYjChIw8q1Znhy2+y9IXy9ShRazR9a8eiAt6JgOY1xjG8VlatqlerCmIJyXApkzKkMBzsGadkMzBwkFe7fEnHZtYMvJ5oEegCDSa/8iqghZdASrlznZswh4OBAMTKNQJbrA+rg0NII14YxsAWFItX7f1c7r7cG0gcQLiEAXkN2lI0BLZO3zGxwkbilaEzqOvn6OqJ6TXpwbh9uV4jFyw/QAvjsaaWjPviKMsRoWlVpNY6WovpueZqInS8MqUmWffyhdhG8bW7OtMn5UGv3fypSjkdJScTowgdQ4/j4A2xlvlNDBTgxLV5fGOfJigmHuiMTWRVaUxowJKgLDHFWDaERmlt2sGLRHA10uh4fmo0asRtiKtlyZPn+MHAs+7Q4ZWoxIeSZvH8aHmVvAYrDLnR2DVxunkd+yAfn3n2N1vZbIvM5cgtS2HA27FTyVtDkqI7x4/jkTGEjaMybDTAhgxWc29/V6ykc4/QwIT/46NhPzSdNjN7T/ZOFCwhGHjwveWLEt+AhDeESM/huY94ZW8QZy9xEJ39c2iCtKcRIL+Hjj3+awx2L2RS+cMnG8p4PJwIXKp4KjF5V4gQ2/EFucCxo32DOCHwiFK10BWy1zC7GngNAhZ20yYJo5+kF+58=
   file_glob: true
-  file: *
+  file: ./*
   skip_cleanup: true
   on:
     repo: WanderlandTravelers/routegen
