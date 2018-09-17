@@ -7,6 +7,7 @@ addons:
     sources:
       - sourceline: 'ppa:ubuntu-sdk-team/ppa'
     packages:
+      - bsdtar
       - gdb
       - qt5-qmake
       - qtbase5-dev
