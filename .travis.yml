@@ -32,13 +32,29 @@ script:
   - make
 
 after_success:
+  - export VERSION=$(cat ../VERSION)
   - make INSTALL_ROOT=build/appdir -j$(nproc) install; find build/appdir/
   - cd build
   - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
   - chmod a+x linuxdeployqt-continuous-x86_64.AppImage
   - ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/local/share/applications/routegen.desktop -appimage
+  - mv RouteGenerator-x86_64.AppImage RouteGenerator-$VERSION-x86_64.AppImage
   - gem install --no-ri --no-rdoc fpm
-  - fpm -s dir -t pacman -n routegen appdir/=/
-  - fpm -s dir -t deb -n routegen appdir/=/
-  - fpm -s dir -t freebsd -n routegen appdir/=/
-  - fpm -s dir -t rpm -n routegen appdir/=/
+  - fpm -s dir -t pacman -n routegen -v $VERSION appdir/=/
+  - fpm -s dir -t deb -n routegen -v $VERSION appdir/=/
+  - fpm -s dir -t freebsd -n routegen -v $VERSION appdir/=/
+  - fpm -s dir -t rpm -n routegen -v $VERSION appdir/=/
+
+deploy:
+  provider: releases
+    api_key:
+      secure: golz8jGgEVz9NKsTcah+1X63yAaM1LmBKnQKbLzGQkO8LlmYjChIw8q1Znhy2+y9IXy9ShRazR9a8eiAt6JgOY1xjG8VlatqlerCmIJyXApkzKkMBzsGadkMzBwkFe7fEnHZtYMvJ5oEegCDSa/8iqghZdASrlznZswh4OBAMTKNQJbrA+rg0NII14YxsAWFItX7f1c7r7cG0gcQLiEAXkN2lI0BLZO3zGxwkbilaEzqOvn6OqJ6TXpwbh9uV4jFyw/QAvjsaaWjPviKMsRoWlVpNY6WovpueZqInS8MqUmWffyhdhG8bW7OtMn5UGv3fypSjkdJScTowgdQ4/j4A2xlvlNDBTgxLV5fGOfJigmHuiMTWRVaUxowJKgLDHFWDaERmlt2sGLRHA10uh4fmo0asRtiKtlyZPn+MHAs+7Q4ZWoxIeSZvH8aHmVvAYrDLnR2DVxunkd+yAfn3n2N1vZbIvM5cgtS2HA27FTyVtDkqI7x4/jkTGEjaMybDTAhgxWc29/V6ykc4/QwIT/46NhPzSdNjN7T/ZOFCwhGHjwveWLEt+AhDeESM/huY94ZW8QZy9xEJ39c2iCtKcRIL+Hjj3+awx2L2RS+cMnG8p4PJwIXKp4KjF5V4gQ2/EFucCxo32DOCHwiFK10BWy1zC7GngNAhZ20yYJo5+kF+58=
+    file:
+      - RouteGenerator-$VERSION-x86_64.AppImage
+      - routegen-$VERSION-1-x86_64.pkg.tar.xz
+      - routegen_$VERSION_amd64.deb
+      - routegen-$VERSION.txz
+      - routegen-$VERSION-1.x86_64.rpm
+    skip_cleanup: true
+    on:
+      repo: WanderlandTravelers/routegen
