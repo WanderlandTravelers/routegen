@@ -1,3 +1,4 @@
+sudo: required
 dist: trusty
 language: cpp
 
@@ -17,6 +18,10 @@ addons:
 matrix:
   include:
     - os: linux
+
+before_install:
+  - sudo apt-get install -qq pkg-config fuse
+  - sudo modprobe fuse
 
 before_script:
   - cd src
