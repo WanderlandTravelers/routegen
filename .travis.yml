@@ -12,6 +12,7 @@ addons:
       - qtdeclarative5-dev
       - libqt5webkit5-dev
       - libsqlite3-dev
+      - rpm
 
 matrix:
   include:
@@ -21,6 +22,17 @@ before_script:
   - cd src
 
 script:
-  - qmake -qt=qt5 routegen.pro
+  - qmake -qt=qt5 routegen.pro CONFIG+=release
   - make
 
+after_success:
+  - make INSTALL_ROOT=build/appdir -j$(nproc) install; find build/appdir/
+  - cd build
+  - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
+  - chmod a+x linuxdeployqt-continuous-x86_64.AppImage
+  - ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/local/share/applications/routegen.desktop -appimage
+  - gem install --no-ri --no-rdoc fpm
+  - fpm -s dir -t pacman -n routegen appdir/=/
+  - fpm -s dir -t deb -n routegen appdir/=/
+  - fpm -s dir -t freebsd -n routegen appdir/=/
+  - fpm -s dir -t rpm -n routegen appdir/=/
