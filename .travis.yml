@@ -34,7 +34,6 @@ script:
 after_success:
   - export VERSION=$(cat ../VERSION)
   - make INSTALL_ROOT=build/appdir -j$(nproc) install; find build/appdir/
-  - ldd /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./build/appdir/usr/lib
   - cd build
   - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
   - chmod a+x linuxdeployqt-continuous-x86_64.AppImage
@@ -44,7 +43,7 @@ after_success:
   - fpm -s dir -t deb -n routegen -v $VERSION ../appdir/=/
   - fpm -s dir -t freebsd -n routegen -v $VERSION ../appdir/=/
   - fpm -s dir -t rpm -n routegen -v $VERSION ../appdir/=/
-  - ../linuxdeployqt-continuous-x86_64.AppImage ../appdir/usr/local/share/applications/routegen.desktop -appimage
+  - ../linuxdeployqt-continuous-x86_64.AppImage ../appdir/usr/local/share/applications/routegen.desktop -appimage -extra-plugins xcb
 
 deploy:
   provider: releases
