@@ -5,11 +5,10 @@ language: cpp
 addons:
   apt:
     sources:
-      - sourceline: 'ppa:ubuntu-sdk-team/ppa'
+      - sourceline: 'ppa:beineri/opt-qt593-trusty'
     packages:
       - gdb
-      - qt5-qmake
-      - qtbase5-dev
+      - qt59base
       - qtdeclarative5-dev
       - libqt5webkit5-dev
       - libsqlite3-dev
@@ -26,8 +25,8 @@ before_script:
   - cd src
 
 script:
-  - qmake -qt=qt5 routegen.pro CONFIG+=release
-  - make
+  - qmake routegen.pro CONFIG+=release PREFIX=/usr
+  - make -j$(nproc)
 
 after_success:
   - export VERSION=$(head -n 1 ../CHANGELOG.md | awk '{print $1}')
