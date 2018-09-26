@@ -43,7 +43,7 @@ after_success:
   - fpm -s dir -t deb -n routegen -v $VERSION ../appdir/=/
   - fpm -s dir -t freebsd -n routegen -v $VERSION ../appdir/=/
   - fpm -s dir -t rpm -n routegen -v $VERSION ../appdir/=/
-  - ../linuxdeployqt-continuous-x86_64.AppImage ../appdir/usr/local/share/applications/routegen.desktop -appimage -extra-plugins=xcb
+  - ../linuxdeployqt-continuous-x86_64.AppImage ../appdir/usr/local/share/applications/routegen.desktop -appimage -extra-plugins=platforms/libqxcb.so
 
 deploy:
   provider: releases
