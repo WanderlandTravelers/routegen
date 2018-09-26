@@ -32,7 +32,7 @@ script:
   - make
 
 after_success:
-  - export VERSION=$(cat ../VERSION)
+  - export VERSION=$(head -n 1 CHANGELOG.md | awk '{print $1}')
   - make INSTALL_ROOT=build/appdir -j$(nproc) install; find build/appdir/
   - cd build
   - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
