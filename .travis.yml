@@ -36,7 +36,7 @@ after_success:
   - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
   - chmod a+x linuxdeployqt-continuous-x86_64.AppImage
   - mkdir -p packages && cd packages
-  - ../linuxdeployqt-continuous-x86_64.AppImage ../appdir/usr/local/share/applications/routegen.desktop -appimage -extra-plugins=platforms/libqxcb.so
+  - ../linuxdeployqt-continuous-x86_64.AppImage ../appdir/usr/local/share/applications/routegen.desktop -qmake="qmake -qt=qt5" -appimage -extra-plugins=platforms/libqxcb.so
 
 deploy:
   provider: releases
