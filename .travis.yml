@@ -21,6 +21,9 @@ before_install:
   - sudo apt-get install -qq pkg-config fuse
   - sudo modprobe fuse
 
+install:
+  - source /opt/qt*/bin/qt*-env.sh
+
 before_script:
   - cd src
 
