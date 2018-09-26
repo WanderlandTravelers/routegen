@@ -37,7 +37,7 @@ after_success:
   - chmod a+x linuxdeployqt-continuous-x86_64.AppImage
   - mkdir -p packages && cd packages
   - unset QTDIR; unset QT_PLUGIN_PATH; unset LD_LIBRARY_PATH
-  - ../linuxdeployqt-continuous-x86_64.AppImage ../appdir/usr/local/share/applications/routegen.desktop -qmake="qmake -qt=qt5" -appimage -extra-plugins=platforms/libqxcb.so
+  - ../linuxdeployqt-continuous-x86_64.AppImage ../appdir/usr/local/share/applications/routegen.desktop -appimage
 
 deploy:
   provider: releases
